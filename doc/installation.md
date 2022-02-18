@@ -7,7 +7,7 @@ Ubuntu 20.04 is available for free download on Microsoft Store.
 
 **Installing Anaconda3**
 
-On your Linux/WSL terminal, run the following commands to install anaconda (replace 5.3.1 by the latest version):
+First of all, we suggest you install [anaconda](https://docs.anaconda.com/anaconda/install/linux/), in order to avoid conflicts linked to different versions of pythons or pip. On your Linux/WSL terminal, run the following commands to install anaconda (replace 5.3.1 by the latest version):
 
 
 * $ wget https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh
