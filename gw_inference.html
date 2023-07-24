@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inference of gravitational-wave signals &mdash; nmma 0.0.13 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nmma-docs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multi-messenger inference" href="joint_inference.html" />
+    <link rel="prev" title="Inference of electromagnetic signals" href="fitting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            nmma
+          </a>
+              <div class="version">
+                0.0.13
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instructions For NMMA Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_inj_obs.html">Injections &amp; observational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fitting.html">Inference of electromagnetic signals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Inference of gravitational-wave signals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#observed-gw-signals">Observed GW signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#injected-gw-signals">Injected GW signals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="joint_inference.html">Multi-messenger inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GW-EM-resampling.html">Connecting Electromagnetic signals to Binary Source Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combined_analysis.html">Perform combined analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cluster_Resources.html">Cluster Resources (Expanse)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nmma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Inference of gravitational-wave signals</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inference-of-gravitational-wave-signals">
+<h1>Inference of gravitational-wave signals<a class="headerlink" href="#inference-of-gravitational-wave-signals" title="Permalink to this headline"></a></h1>
+<p>A Bayesian analysis of a gravitational-wave signal which is not accompanied by electromagnetic signals can be performed within nmma following two main steps:</p>
+<p>Setting up a <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> file and running the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_gw_generation</span> <span class="n">config</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>Perform the analysis or parameter estimation using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_gw_analysis</span> <span class="o">&lt;</span><span class="n">name_of_analysis</span><span class="o">&gt;</span><span class="n">_data_dump</span><span class="o">.</span><span class="n">pickle</span>
+</pre></div>
+</div>
+<p>Below, we provide an example of a gravitational-wave inference setup using observational data of GW170817 and another example for an injection based analysis.</p>
+<section id="observed-gw-signals">
+<h2>Observed GW signals<a class="headerlink" href="#observed-gw-signals" title="Permalink to this headline"></a></h2>
+<p>In this example, we use GW170817 as an example. First of all, a <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> file needs to be created and adapted it to this specific observation.
+An example is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
+<span class="c1">## Data generation arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">trigger_time</span> <span class="o">=</span> <span class="mf">1187008882.43</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">## Detector arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">detectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">H1</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">V1</span><span class="p">]</span>
+<span class="n">psd_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">H1</span><span class="o">=</span><span class="n">data</span><span class="o">/</span><span class="n">GW170817</span><span class="o">/</span><span class="n">h1_psd</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span> <span class="n">L1</span><span class="o">=</span><span class="n">data</span><span class="o">/</span><span class="n">GW170817</span><span class="o">/</span><span class="n">l1_psd</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span> <span class="n">V1</span><span class="o">=</span><span class="n">data</span><span class="o">/</span><span class="n">GW170817</span><span class="o">/</span><span class="n">v1_psd</span><span class="o">.</span><span class="n">txt</span><span class="p">}</span>
+<span class="n">channel_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">H1</span><span class="o">=</span><span class="n">LOSC</span><span class="o">-</span><span class="n">STRAIN</span><span class="p">,</span> <span class="n">L1</span><span class="o">=</span><span class="n">LOSC</span><span class="o">-</span><span class="n">STRAIN</span><span class="p">,</span> <span class="n">V1</span><span class="o">=</span><span class="n">LOSC</span><span class="o">-</span><span class="n">STRAIN</span><span class="p">}</span>
+<span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">H1</span><span class="o">=</span><span class="n">data</span><span class="o">/</span><span class="n">GW170817</span><span class="o">/</span><span class="n">H</span><span class="o">-</span><span class="n">H1_LOSC_CLN_16_V1</span><span class="o">-</span><span class="mi">1187007040</span><span class="o">-</span><span class="mf">2048.</span><span class="n">gwf</span><span class="p">,</span> <span class="n">L1</span><span class="o">=</span><span class="n">data</span><span class="o">/</span><span class="n">GW170817</span><span class="o">/</span><span class="n">L</span><span class="o">-</span><span class="n">L1_LOSC_CLN_16_V1</span><span class="o">-</span><span class="mi">1187007040</span><span class="o">-</span><span class="mf">2048.</span><span class="n">gwf</span><span class="p">,</span> <span class="n">V1</span><span class="o">=</span><span class="n">data</span><span class="o">/</span><span class="n">GW170817</span><span class="o">/</span><span class="n">V</span><span class="o">-</span><span class="n">V1_LOSC_CLN_16_V1</span><span class="o">-</span><span class="mi">1187007040</span><span class="o">-</span><span class="mf">2048.</span><span class="n">gwf</span><span class="p">}</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">## Job submission arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="n">GW170817</span>
+<span class="n">outdir</span> <span class="o">=</span> <span class="n">outdir</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">## Likelihood arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">distance</span><span class="o">-</span><span class="n">marginalization</span><span class="o">=</span><span class="kc">False</span>
+<span class="n">phase</span><span class="o">-</span><span class="n">marginalization</span><span class="o">=</span><span class="kc">False</span>
+<span class="n">time</span><span class="o">-</span><span class="n">marginalization</span><span class="o">=</span><span class="kc">False</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">## Prior arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">prior</span><span class="o">-</span><span class="n">file</span> <span class="o">=</span> <span class="n">GW170817</span><span class="o">.</span><span class="n">prior</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">## Waveform arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">frequency</span><span class="o">-</span><span class="n">domain</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">model</span> <span class="o">=</span> <span class="n">lal_binary_neutron_star</span>
+<span class="n">waveform_approximant</span> <span class="o">=</span> <span class="n">IMRPhenomPv2_NRTidalv2</span>
+<span class="n">binary</span><span class="o">-</span><span class="nb">type</span><span class="o">=</span><span class="n">BNS</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">## EOS arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="k">with</span><span class="o">-</span><span class="n">eos</span><span class="o">=</span><span class="kc">True</span> 
+<span class="n">eos</span><span class="o">-</span><span class="n">data</span><span class="o">=./</span><span class="n">eos</span><span class="o">/</span><span class="n">eos_sorted</span> 
+<span class="n">Neos</span><span class="o">=</span><span class="mi">15000</span>
+<span class="n">eos</span><span class="o">-</span><span class="n">weight</span><span class="o">=./</span><span class="n">eos</span><span class="o">/</span><span class="n">EOS_sorted_weight</span><span class="o">.</span><span class="n">dat</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">trigger</span> <span class="pre">time</span></code> is the time of the observed event. With regard to detector arguments, one has to specify which detectors should be used. For example, <code class="docutils literal notranslate"><span class="pre">detectors</span> <span class="pre">=</span> <span class="pre">[H1,</span> <span class="pre">L1,</span> <span class="pre">V1]</span></code> stand for LIGO detectors Hanford, Livingston and Virgo. For each detector, the noise power spectral density of gravitational wave detector needs to be provided. Within <code class="docutils literal notranslate"><span class="pre">data_dict</span></code>, one needs to provide the GW170817 data measured within each detector.</p>
+<p>With regard to likelihood arguments, we can specify if want a marginal likelihood that has been integrated over the parameter space, e.g. for distance, phase, or time. The prior file should be tailored to the observed event, in this case GW170817 but also with regard to the GW model that is used for the parameter estimation. The GW model can be specified in <code class="docutils literal notranslate"><span class="pre">waveform_approximant</span></code>. Here, we use the phenomenological model <code class="docutils literal notranslate"><span class="pre">IMRPhenomPv2_NRTidalv2</span></code> for a precessing binary neutron star model, see <a class="reference external" href="https://pure.mpg.de/rest/items/item_3058536/component/file_3058537/content">Dietrich et al.</a>.</p>
+<p>For inferring the source properties of GW170817, we will sample over a set of EOSs that were computed with Chiral Effective Field Theory. The EOS set <code class="docutils literal notranslate"><span class="pre">15nsat_cse_natural_R14</span></code> was used in the study of <a class="reference external" href="https://www.nature.com/articles/s41586-022-04750-w#data-availability">Huth et al.</a> and can be downloaded there. In order to make use of the EOS set during the sampling, a pre-routine is required. Within this step, one can include different constraints on the NS EOS such as measurement of NICER or pulsar measurements which is reflected in the <code class="docutils literal notranslate"><span class="pre">EOS_sorted_weight.dat</span></code> and one needs to sort the EOS files <code class="docutils literal notranslate"><span class="pre">eos_sorted</span></code> in order to reduce sampling time.</p>
+<p>Once the <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> file is set, the genertation can be run with <code class="docutils literal notranslate"><span class="pre">nmma_gw_generation</span> <span class="pre">config.ini</span></code> which will create a directory <code class="docutils literal notranslate"><span class="pre">outdir</span></code>. The submit file for the inference can be found under <code class="docutils literal notranslate"><span class="pre">outdir/data/&lt;name_of_analysis&gt;_data_dump.pickle</span></code> in the example above it would be <code class="docutils literal notranslate"><span class="pre">GW170817_data_dump.pickle</span></code>. For the analysis of GW signals, it is recommended to run the inference (<code class="docutils literal notranslate"><span class="pre">nmma_gw_analysis</span> <span class="pre">&lt;name_of_analysis&gt;_data_dump.pickle</span></code>) on larger clusters. An exemplary submit script is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#SBATCH -p &lt;queue_name&gt;
+#SBATCH --job-name=GW170817
+#SBATCH --nodes=17
+#SBATCH --ntasks-per-node=48
+#SBATCH --time=48:00:00
+#SBATCH -o outdir/log_data_analysis/GW170817.log
+#SBATCH -e outdir/log_data_analysis/GW170817.err
+#SBATCH -D ./
+#SBATCH --export=NONE
+#SBATCH --no-requeue
+#SBATCH --account=&lt;account_name&gt;
+#SBATCH --mail-type=BEGIN,END
+#SBATCH --mail-user=&lt;email&gt;
+
+module load slurm_setup
+module load python/3.8
+source &lt;path_to_environment&gt;/bin/activate
+
+export SLURM_EAR_LOAD_MPI_VERSION=&quot;intel&quot;    #for Intel MPI
+export MKL_NUM_THREADS=&quot;1&quot;
+export MKL_DYNAMIC=&quot;FALSE&quot;
+export OMP_NUM_THREADS=1
+export MPI_PER_NODE=48
+
+mpiexec -n $SLURM_NTASKS nmma_gw_analysis outdir/data/GW170817_data_dump.pickle --nlive 2048 --maxmcmc 10000 --nact 10 --no-plot --label GW170817 --outdir outdir/result --sampling-seed 1234
+</pre></div>
+</div>
+<p>The final posterior samples for the observed event GW170817 can be found under <code class="docutils literal notranslate"><span class="pre">outdir/result/</span></code>. Note that settings might differ from cluster to cluster and also the installation of NMMA might be changed (conda vs. python installation).</p>
+</section>
+<section id="injected-gw-signals">
+<h2>Injected GW signals<a class="headerlink" href="#injected-gw-signals" title="Permalink to this headline"></a></h2>
+<p>For synthetic signals, the <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> file needs to be slightly adapted. First of all, some injection specific flags need to be provided which are listed below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
+<span class="c1">## Injection arguments</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">injection</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">n</span><span class="o">-</span><span class="n">simulation</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">injection</span><span class="o">-</span><span class="n">file</span> <span class="o">=</span> <span class="o">./</span><span class="n">O4_injections_mdyninj_1e</span><span class="o">-</span><span class="mf">5.</span><span class="n">json</span>
+<span class="n">injection_numbers</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">injection</span> <span class="pre">=</span> <span class="pre">True</span></code> flag enables parameter estimation with injected signals and <code class="docutils literal notranslate"><span class="pre">n-simulation</span> <span class="pre">=</span> <span class="pre">1</span></code> initiates inference for one synthetic signal. An <code class="docutils literal notranslate"><span class="pre">injection-file</span></code> needs to be provided in order to specify for which system the inference should be run. The creation of injected signals is shown <a class="reference external" href="./data_inj_obs.html">here</a>. The <code class="docutils literal notranslate"><span class="pre">injection_numbers=</span> <span class="pre">[0]</span></code> uses in this case only the first signal in the injection file.</p>
+<p>Moreover, other flags which are related to an observed event should be commented out such as trigger time and provided observational data. The rest remains the same as shown above for the case of an observed GW event.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fitting.html" class="btn btn-neutral float-left" title="Inference of electromagnetic signals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="joint_inference.html" class="btn btn-neutral float-right" title="Multi-messenger inference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, The SkyPortal Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

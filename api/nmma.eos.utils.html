@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; nmma 0.0.13 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nmma-docs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            nmma
+          </a>
+              <div class="version">
+                0.0.13
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Instructions For NMMA Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training.html">Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_inj_obs.html">Injections &amp; observational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fitting.html">Inference of electromagnetic signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gw_inference.html">Inference of gravitational-wave signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../joint_inference.html">Multi-messenger inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GW-EM-resampling.html">Connecting Electromagnetic signals to Binary Source Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../combined_analysis.html">Perform combined analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cluster_Resources.html">Cluster Resources (Expanse)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">How to Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nmma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-nmma.eos.utils"></span><dl class="py function">
+<dt class="sig sig-object py" id="nmma.eos.utils.EOSConstraints2Prior">
+<span class="sig-prename descclassname"><span class="pre">nmma.eos.utils.</span></span><span class="sig-name descname"><span class="pre">EOSConstraints2Prior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eos_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.EOSConstraints2Prior" title="Permalink to this definition"></a></dt>
+<dd><p>Given a directory of EOSs and nmma.joint.Constraint,
+returns sorted EOSs and the corresponding prior</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>eos_path: str</strong></dt><dd><p>Path to the original EOSs</p>
+</dd>
+<dt><strong>out_path: str</strong></dt><dd><p>Path to the sorted EOSs</p>
+</dd>
+<dt><strong>Neos: int</strong></dt><dd><p>Number of EOSs</p>
+</dd>
+<dt><strong>Constraint: nmma.joint.Constraint</strong></dt><dd><p>The EOS constraint to be consider</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>prior: bilby.core.Prior</dt><dd><p>Prior on the EOSs</p>
+</dd>
+<dt>logNorm: float</dt><dd><p>log normalization constant for the EOS prior</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nmma.eos.utils.EOSConstraintsLoglikelihood">
+<span class="sig-prename descclassname"><span class="pre">nmma.eos.utils.</span></span><span class="sig-name descname"><span class="pre">EOSConstraintsLoglikelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eos_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.EOSConstraintsLoglikelihood" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nmma.eos.utils.EOSSorting">
+<span class="sig-prename descclassname"><span class="pre">nmma.eos.utils.</span></span><span class="sig-name descname"><span class="pre">EOSSorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eos_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.EOSSorting" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nmma.eos.utils.JointConstraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nmma.eos.utils.</span></span><span class="sig-name descname"><span class="pre">JointConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_masses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_masses_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV_weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NICER_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NICER_weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.JointConstraint" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>NICER_logweight</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>maxTOVmass_logweight</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>pulsar_logweight</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pulsar_mtov_weight</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>total_logweight</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.JointConstraint.NICER_logweight">
+<span class="sig-name descname"><span class="pre">NICER_logweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NICER_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.JointConstraint.NICER_logweight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.JointConstraint.maxTOVmass_logweight">
+<span class="sig-name descname"><span class="pre">maxTOVmass_logweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxMTOV</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.JointConstraint.maxTOVmass_logweight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.JointConstraint.pulsar_logweight">
+<span class="sig-name descname"><span class="pre">pulsar_logweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pulsar_masses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_masses_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.JointConstraint.pulsar_logweight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.JointConstraint.pulsar_mtov_weight">
+<span class="sig-name descname"><span class="pre">pulsar_mtov_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV_weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.JointConstraint.pulsar_mtov_weight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.JointConstraint.total_logweight">
+<span class="sig-name descname"><span class="pre">total_logweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV_weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NICER_weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.JointConstraint.total_logweight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nmma.eos.utils.MTOVUpperConstraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nmma.eos.utils.</span></span><span class="sig-name descname"><span class="pre">MTOVUpperConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxMTOV</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.MTOVUpperConstraint" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>maxTOVmass_logweight</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.MTOVUpperConstraint.maxTOVmass_logweight">
+<span class="sig-name descname"><span class="pre">maxTOVmass_logweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxMTOV</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxMTOV_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.MTOVUpperConstraint.maxTOVmass_logweight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nmma.eos.utils.NICERConstraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nmma.eos.utils.</span></span><span class="sig-name descname"><span class="pre">NICERConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NICER_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.NICERConstraint" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 66%" />
+<col style="width: 34%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>NICER_logweight</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.NICERConstraint.NICER_logweight">
+<span class="sig-name descname"><span class="pre">NICER_logweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NICER_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.NICERConstraint.NICER_logweight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nmma.eos.utils.PulsarConstraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nmma.eos.utils.</span></span><span class="sig-name descname"><span class="pre">PulsarConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pulsar_masses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_masses_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.PulsarConstraint" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>pulsar_logweight</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="nmma.eos.utils.PulsarConstraint.pulsar_logweight">
+<span class="sig-name descname"><span class="pre">pulsar_logweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pulsar_masses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulsar_masses_error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EOSpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Neos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nmma.eos.utils.PulsarConstraint.pulsar_logweight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, The SkyPortal Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

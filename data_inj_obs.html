@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Injections &amp; observational data &mdash; nmma 0.0.13 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nmma-docs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Inference of electromagnetic signals" href="fitting.html" />
+    <link rel="prev" title="Training" href="training.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            nmma
+          </a>
+              <div class="version">
+                0.0.13
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instructions For NMMA Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Injections &amp; observational data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#injections">Injections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#observational-data">Observational data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fitting.html">Inference of electromagnetic signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gw_inference.html">Inference of gravitational-wave signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="joint_inference.html">Multi-messenger inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GW-EM-resampling.html">Connecting Electromagnetic signals to Binary Source Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combined_analysis.html">Perform combined analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cluster_Resources.html">Cluster Resources (Expanse)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nmma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Injections &amp; observational data</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="injections-observational-data">
+<h1>Injections &amp; observational data<a class="headerlink" href="#injections-observational-data" title="Permalink to this headline"></a></h1>
+<section id="injections">
+<h2>Injections<a class="headerlink" href="#injections" title="Permalink to this headline"></a></h2>
+<p>For a parameter estimation run on simulated data (i.e., when no observational data is available), an injection-file line is required in your config.ini-file
+pointing a <code class="docutils literal notranslate"><span class="pre">dat</span></code> or <code class="docutils literal notranslate"><span class="pre">json</span></code> injection file. The injection file itself contains a list of values for each source parameter (such as masses, distance etc.) and
+is used to generate synthetic electromagnetic or gravitational-wave signals for particular sources (e.g. BNS, NSBH).</p>
+<p>To generate an injection file, NMMA provides the command-line utility <code class="docutils literal notranslate"><span class="pre">nmma_create_injection</span></code>. This generates a json style injection file by drawing from a prior file.</p>
+<p><strong>Create GW signal injection</strong></p>
+<p>For a binary neutron star merger, we can use the <a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma/blob/main/priors/GWBNS.prior">GWBNS.prior</a> file to generate
+synthetic signals. Running the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_create_injection</span> <span class="o">--</span><span class="n">prior</span><span class="o">-</span><span class="n">file</span> <span class="n">GWBNS</span><span class="o">.</span><span class="n">prior</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">-</span><span class="n">s</span> <span class="mi">42</span> <span class="o">--</span><span class="n">eos</span><span class="o">-</span><span class="n">file</span> <span class="o">&lt;</span><span class="n">EOSdata</span><span class="o">.</span><span class="n">dat</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">BNS</span> <span class="o">-</span><span class="n">e</span> <span class="n">json</span> <span class="o">-</span><span class="n">f</span> <span class="n">injection_bns</span> <span class="o">--</span><span class="n">duration</span> <span class="mi">128</span>  
+</pre></div>
+</div>
+<p>will create an injection file <code class="docutils literal notranslate"><span class="pre">injection_bns.json</span></code> for 10 BNS sources each having a duration of 128 s. The <code class="docutils literal notranslate"><span class="pre">eos-file</span></code> command is useful, when information from a
+particular EOS should be used. Here, the path and file name to the EOS file needs to be provided.</p>
+<p><strong>Create EM signal injection</strong></p>
+<p>Taking the Metzger (2017) blue kilonova model as an example, a set of injections can be generated by using this <a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma/blob/main/priors/Me2017.prior">Me2017.prior</a> file.
+Here, we include information from an EOS called <code class="docutils literal notranslate"><span class="pre">ALF2.dat</span></code> for the generation of 100 synthetic electromagnetic kilonova signals:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_create_injection</span> <span class="o">--</span><span class="n">prior</span><span class="o">-</span><span class="n">file</span> <span class="n">priors</span><span class="o">/</span><span class="n">Me2017</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">eos</span><span class="o">-</span><span class="n">file</span> <span class="n">example_files</span><span class="o">/</span><span class="n">eos</span><span class="o">/</span><span class="n">ALF2</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">BNS</span> <span class="o">--</span><span class="n">n</span><span class="o">-</span><span class="n">injection</span> <span class="mi">100</span> <span class="o">--</span><span class="n">original</span><span class="o">-</span><span class="n">parameters</span> <span class="o">--</span><span class="n">extension</span> <span class="n">json</span>
+</pre></div>
+</div>
+<p>or for the <code class="docutils literal notranslate"><span class="pre">Bu2019lm</span></code> model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_create_injection</span> <span class="o">--</span><span class="n">prior</span><span class="o">-</span><span class="n">file</span> <span class="n">priors</span><span class="o">/</span><span class="n">Bu2019lm</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">eos</span><span class="o">-</span><span class="n">file</span> <span class="n">example_files</span><span class="o">/</span><span class="n">eos</span><span class="o">/</span><span class="n">ALF2</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">BNS</span> <span class="o">--</span><span class="n">n</span><span class="o">-</span><span class="n">injection</span> <span class="mi">100</span> <span class="o">--</span><span class="n">original</span><span class="o">-</span><span class="n">parameters</span> <span class="o">--</span><span class="n">extension</span> <span class="n">json</span> <span class="o">--</span><span class="n">aligned</span><span class="o">-</span><span class="n">spin</span>
+</pre></div>
+</div>
+<p>There are other options for creating an injection file, such as a pre-computed simulation set. In this case a prior is still needed, but it will only be applied
+where it is necessary. Taking the Petrov et al. 2022 samples and the Bu2019lm prior as an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_create_injection</span> <span class="o">--</span><span class="n">injection</span><span class="o">-</span><span class="n">file</span> <span class="n">example_files</span><span class="o">/</span><span class="n">sim_events</span><span class="o">/</span><span class="n">injections</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">prior</span><span class="o">-</span><span class="n">file</span> <span class="n">priors</span><span class="o">/</span><span class="n">Bu2019lm</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">eos</span><span class="o">-</span><span class="n">file</span> <span class="n">example_files</span><span class="o">/</span><span class="n">eos</span><span class="o">/</span><span class="n">ALF2</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">BNS</span> <span class="o">--</span><span class="n">n</span><span class="o">-</span><span class="n">injection</span> <span class="mi">100</span> <span class="o">--</span><span class="n">original</span><span class="o">-</span><span class="n">parameters</span> <span class="o">--</span><span class="n">extension</span> <span class="n">json</span> <span class="o">--</span><span class="n">aligned</span><span class="o">-</span><span class="n">spin</span>
+</pre></div>
+</div>
+</section>
+<section id="observational-data">
+<h2>Observational data<a class="headerlink" href="#observational-data" title="Permalink to this headline"></a></h2>
+<p>In contrast to synthetic data, NMMA can make use of observational data both from electromagnetic and gravitational-wave observations. In order to make sure that
+the NMMA framework can smoothly read in and interpret observed signals, a short description of the data structure can be found below.</p>
+<p><strong>Electromagnetic data</strong></p>
+<p>Observatories provide observational data as a measured flux or as spectral flux density which needs to be converted to the AB magnitude system in order to be
+used within NMMA. It is important to distinguish between different spectral filters in order to run a consistent analysis. Current available filters can be
+checked in <a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma/blob/baf85f600a6e7369608c7bd6e76b9f1f4ec3d1cd/nmma/em/utils.py#L48">utils.py</a>.
+A specific flux or respective magnitude measurement comes along with a specific time stamp which needs to be in the ISOT time format.
+For further details, see <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.TimeISOT.html">here</a>.</p>
+<p>Example: AT2017gfo data excerpt</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">g</span> <span class="mf">17.41000</span> <span class="mf">0.02000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">r</span> <span class="mf">17.56000</span> <span class="mf">0.04000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">i</span> <span class="mf">17.48000</span> <span class="mf">0.03000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">z</span> <span class="mf">17.59000</span> <span class="mf">0.03000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">y</span> <span class="mf">17.46000</span> <span class="mf">0.01000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="mi">2</span><span class="n">massj</span> <span class="mf">17.88000</span> <span class="mf">0.03000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="mi">2</span><span class="n">massh</span> <span class="mf">18.26000</span> <span class="mf">0.15000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.000</span> <span class="mi">2</span><span class="n">massk</span> <span class="mf">18.62000</span> <span class="mf">0.11000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T05</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mf">38.400</span> <span class="n">ps1</span><span class="p">::</span><span class="n">i</span> <span class="mf">17.24000</span> <span class="mf">0.06000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T05</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mf">38.400</span> <span class="n">ps1</span><span class="p">::</span><span class="n">z</span> <span class="mf">17.26000</span> <span class="mf">0.06000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T05</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mf">38.400</span> <span class="n">ps1</span><span class="p">::</span><span class="n">y</span> <span class="mf">17.38000</span> <span class="mf">0.10000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T10</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">48.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">g</span> <span class="mf">17.46000</span> <span class="mf">0.08000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T10</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">48.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">r</span> <span class="mf">17.32000</span> <span class="mf">0.07000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T10</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">48.000</span> <span class="n">ps1</span><span class="p">::</span><span class="n">i</span> <span class="mf">17.42000</span> <span class="mf">0.05000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T18</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">31.200</span> <span class="n">ps1</span><span class="p">::</span><span class="n">g</span> <span class="mf">18.05000</span> <span class="mf">0.12000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T18</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">31.200</span> <span class="n">ps1</span><span class="p">::</span><span class="n">r</span> <span class="mf">17.89000</span> <span class="mf">0.03000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T18</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">31.200</span> <span class="mi">2</span><span class="n">massj</span> <span class="mf">17.51000</span> <span class="mf">0.03000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T18</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">31.200</span> <span class="mi">2</span><span class="n">massh</span> <span class="mf">17.64000</span> <span class="mf">0.04000</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span><span class="n">T18</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">31.200</span> <span class="mi">2</span><span class="n">massk</span> <span class="mf">17.91000</span> <span class="mf">0.05000</span>
+</pre></div>
+</div>
+<p>The first column represents the ISOT time, followed by the filter or spectral band in the second column, the measured AB magnitude and its respective error are given in the third and fourth column. This data structure detailed above is also applicable for other astrophysical sources (SNe, GRBs) or models implemented in NMMA.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="training.html" class="btn btn-neutral float-left" title="Training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fitting.html" class="btn btn-neutral float-right" title="Inference of electromagnetic signals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, The SkyPortal Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

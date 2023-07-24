@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connecting Electromagnetic signals to Binary Source Properties &mdash; nmma 0.0.13 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nmma-docs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Perform combined analyses" href="combined_analysis.html" />
+    <link rel="prev" title="Multi-messenger inference" href="joint_inference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            nmma
+          </a>
+              <div class="version">
+                0.0.13
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instructions For NMMA Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_inj_obs.html">Injections &amp; observational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fitting.html">Inference of electromagnetic signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gw_inference.html">Inference of gravitational-wave signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="joint_inference.html">Multi-messenger inference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Connecting Electromagnetic signals to Binary Source Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combined_analysis.html">Perform combined analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cluster_Resources.html">Cluster Resources (Expanse)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nmma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Connecting Electromagnetic signals to Binary Source Properties</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="connecting-electromagnetic-signals-to-binary-source-properties">
+<h1>Connecting Electromagnetic signals to Binary Source Properties<a class="headerlink" href="#connecting-electromagnetic-signals-to-binary-source-properties" title="Permalink to this headline"></a></h1>
+<p>In NMMA, it is possible to use the results from GW inferences together with kilonova inferences or joint KN+GRB afterglow inferences to get estimates on the binary properties.
+A binary system can be a binary neutron star (BNS) merger or a neutron-star-black-hole (NSBH) merger. We can connect observed electromagnetic signals to potential
+source properties via phenomenological relations, i.e., via fits based on numerical-relativity relations, see <a class="reference external" href="https://arxiv.org/pdf/2205.08513.pdf">(Pang et al. 2022)</a> and Refs. therein for further details.</p>
+<p>For estimating the source properties, the following input files are required:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EMsamples</span></code> - is the posterior sample file from a previous Bayesian inference (e.g. Kilonova+GRB inference) on electromagnetic (EM) signals,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMprior</span></code> - is the prior file that was used for the EM inference</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EOS</span></code> - number of equation of state files which will be used in the resampling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EOSpath</span></code> - path to the folder of all EOS files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GWsamples</span></code> - some fiducial randomly generated posterior samples for masses, chirp mass, mass ratio, luminosity distance, and EOS samples,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GWprior</span></code> - a prior file for gravitational wave sources</p></li>
+</ul>
+<p><strong>Estimating BNS properties</strong></p>
+<p>Here, we take the observed gamma-ray burst <a class="reference external" href="https://arxiv.org/abs/2204.10864">GRB211211A</a> as an example and assume that associated electromagnetic signals
+originated from a BNS merger. For this signal, a joint inference (kilonova + GRB) can be carried out and will provide you with the required <code class="docutils literal notranslate"><span class="pre">EMsamples</span></code>.
+For the <code class="docutils literal notranslate"><span class="pre">GWsamples</span></code> input file, we need to generate some fiducial dummy GW samples. A script for the generation can be found <a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma/blob/main/example_files/tools/gwem_resampling/gwsamples_generation.py">here</a>.
+The GW sample generation is based on the EOS set <code class="docutils literal notranslate"><span class="pre">15nsat_cse_uniform_R14</span></code> which can be found on <a class="reference external" href="https://zenodo.org/record/6106130#.Y1pdM9JBxhG">Zenodo</a>.
+The <code class="docutils literal notranslate"><span class="pre">EMprior</span></code> file is the same as used for the KN+GRB inference (see <a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma/tree/main/priors">priors</a>) and the GWprior file should be adjusted to the GWsamples.</p>
+<p>Finally, we can use this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gwem_resampling</span> <span class="o">--</span><span class="n">outdir</span> <span class="n">outdir</span> <span class="o">--</span><span class="n">GWsamples</span> <span class="n">example_files</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">gwem_resampling</span><span class="o">/</span><span class="n">GWsamples</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">GWprior</span> <span class="n">priors</span><span class="o">/</span><span class="n">GWBNS</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">EMsamples</span> <span class="n">example_files</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">gwem_resampling</span><span class="o">/</span><span class="n">GRB211211A_posterior_samples</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">EOSpath</span> <span class="mi">15</span><span class="n">nsat_cse_uniform_R14</span><span class="o">/</span><span class="n">macro</span><span class="o">/</span> <span class="o">--</span><span class="n">Neos</span> <span class="mi">5000</span> <span class="o">--</span><span class="n">EMprior</span> <span class="n">priors</span><span class="o">/</span><span class="n">Bu2019lm_TrPi2018GRB211211A</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">nlive</span> <span class="mi">1024</span>  
+</pre></div>
+</div>
+<p>The result will be a posterior file containing information on:</p>
+<ul class="simple">
+<li><p>the chirp mass $\mathcal{M}_c$,</p></li>
+<li><p>mass ratio <span class="math notranslate nohighlight">\(q\)</span>,</p></li>
+<li><p>Tidal deformability $\tilde{\Lambda}$,</p></li>
+<li><p>dynamical ejecta mass error <span class="math notranslate nohighlight">\(α\)</span>,</p></li>
+<li><p>dynamical ejecta mass fraction <span class="math notranslate nohighlight">\(ζ\)</span>, and</p></li>
+<li><p>equation of state EOS</p></li>
+</ul>
+<p>A corner plot is shown below:</p>
+<p><img alt="GWEMcornerplot" src="_images/corner_samples.png" /></p>
+<p><strong>Estimating NSBH properties</strong></p>
+<p>In order to estimate the properties of a NSBH system, you need to adjust the <code class="docutils literal notranslate"><span class="pre">GWsamples</span></code> and <code class="docutils literal notranslate"><span class="pre">GWprior</span></code> file accordingly and run the resampling
+with the argument <code class="docutils literal notranslate"><span class="pre">withNSBH</span></code> (otherwise, you will run for a BNS system).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gwem_resampling</span> <span class="o">--</span><span class="n">outdir</span> <span class="n">outdir</span> <span class="o">--</span><span class="n">GWsamples</span> <span class="n">example_files</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">gwem_resampling</span><span class="o">/</span><span class="n">GWsamples_NSBH</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">GWprior</span> <span class="n">priors</span><span class="o">/</span><span class="n">GWNSBH</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">withNSBH</span> <span class="o">--</span><span class="n">EMsamples</span> <span class="n">example_files</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">gwem_resampling</span><span class="o">/</span><span class="n">GRB211211A_NSBH_posterior_samples</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">EOSpath</span> <span class="mi">15</span><span class="n">nsat_cse_uniform_R14</span><span class="o">/</span><span class="n">macro</span><span class="o">/</span> <span class="o">--</span><span class="n">Neos</span> <span class="mi">5000</span> <span class="o">--</span><span class="n">EMprior</span> <span class="n">priors</span><span class="o">/</span><span class="n">Bu2019nsbh_TrPi2018_GRB211211A</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">nlive</span> <span class="mi">1024</span>  
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="joint_inference.html" class="btn btn-neutral float-left" title="Multi-messenger inference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="combined_analysis.html" class="btn btn-neutral float-right" title="Perform combined analyses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, The SkyPortal Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

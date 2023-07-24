@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructions for using nmma and gwemopt to simulate KNe detection with ZTF and LSST &mdash; nmma 0.0.13 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nmma-docs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            nmma
+          </a>
+              <div class="version">
+                0.0.13
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instructions For NMMA Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_inj_obs.html">Injections &amp; observational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fitting.html">Inference of electromagnetic signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gw_inference.html">Inference of gravitational-wave signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="joint_inference.html">Multi-messenger inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GW-EM-resampling.html">Connecting Electromagnetic signals to Binary Source Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="combined_analysis.html">Perform combined analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cluster_Resources.html">Cluster Resources (Expanse)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nmma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Instructions for using <strong>nmma</strong> and <strong>gwemopt</strong> to simulate KNe detection with ZTF and LSST</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instructions-for-using-nmma-and-gwemopt-to-simulate-kne-detection-with-ztf-and-lsst">
+<h1>Instructions for using <strong><a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma">nmma</a></strong> and <strong><a class="reference external" href="https://github.com/mcoughlin/gwemopt">gwemopt</a></strong> to simulate KNe detection with ZTF and LSST<a class="headerlink" href="#instructions-for-using-nmma-and-gwemopt-to-simulate-kne-detection-with-ztf-and-lsst" title="Permalink to this headline"></a></h1>
+<p>First of all we have to install <strong><a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma">nmma</a></strong>  and <strong><a class="reference external" href="https://github.com/mcoughlin/gwemopt">gwemopt</a></strong> together in the same environmment.</p>
+<p>1 <strong>- Install nmma</strong>:</p>
+<p>Instructions For  <code class="docutils literal notranslate"><span class="pre">nmma</span></code> click here:  <strong><a class="reference external" href="https://github.com/nuclear-multimessenger-astronomy/nmma/blob/main/doc/installation.md">NMMA-installation</a></strong></p>
+<p>2 <strong>- Install gwemopt</strong>:</p>
+<p>Instructions For  <code class="docutils literal notranslate"><span class="pre">gwemopt</span></code> click here:  <strong><a class="reference external" href="https://github.com/mcoughlin/gwemopt/blob/main/README.md">gwemopt-installation</a></strong></p>
+<p>3 <strong>- Split Farah(GWTC-3) CBCs data in BNS and NSBH</strong></p>
+<p>In the injections.dat files outcome  <strong><a class="reference external" href="https://github.com/lpsinger/observing-scenarios-simulations">observing-scenarios-simulations</a></strong>, the masses of the CBCs are masses observed in the detectors. To splitting them  into BNS, NSBH and BBH populations, we should convert them in source frame mass.</p>
+<p>All CBCs in <code class="docutils literal notranslate"><span class="pre">Farah(GWTC-3)</span></code> distribustion  that passed the SNR are recorded here: <strong><a class="reference external" href="https://github.com/weizmannk/obs-scenarios-data-2022">obs-scenarios-data-2022</a></strong> . For reasons of weight, we keep only the data necessary to produce the light curves, so the simulation with nmma.
+For more data like skymaps file please go to <strong><a class="reference external" href="https://doi.org/10.5281/zenodo.7026209">zenodo</a></strong>. Anyway we need to download it if we need to get skymap files (<code class="docutils literal notranslate"><span class="pre">.fits</span></code> files )  to run the KNe  detection process with <strong><a class="reference external" href="https://github.com/mcoughlin/gwemopt">gwemopt</a></strong>.</p>
+<p>Use the following python code for the <code class="docutils literal notranslate"><span class="pre">split</span></code>:</p>
+<p>Click here: <strong><a class="reference external" href="https://github.com/weizmannk/obs-scenarios-data-2022/blob/main/split_CBC_data_for_nmma.py">split_CBC_data_for_nmma.py</a></strong></p>
+<section id="generate-a-simulation-set">
+<h2><strong>Generate a <code class="docutils literal notranslate"><span class="pre">simulation</span> <span class="pre">set</span></code></strong><a class="headerlink" href="#generate-a-simulation-set" title="Permalink to this headline"></a></h2>
+<p>4 <strong>- Then use <code class="docutils literal notranslate"><span class="pre">BNS</span></code> or <code class="docutils literal notranslate"><span class="pre">NSBH</span></code></strong>  injections.dat  to create injection file with nmma.</p>
+<p>To generate a json file (<code class="docutils literal notranslate"><span class="pre">injection.json</span></code>)  with the BILBY processing of compact binary merging events. This injection contents a simulation set of parameters : luminosity_distance, log10_mej_wind, KNphi, inclination_EM, KNtimeshift, geocent_time for the KNe (<code class="docutils literal notranslate"><span class="pre">Bu2019lm</span></code> - BNS or <code class="docutils literal notranslate"><span class="pre">Bu2019nsbh</span></code> - NSBH) model.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">BNS</span></code> type</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_create_injection</span> <span class="o">--</span><span class="n">prior</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">priors</span><span class="o">/</span><span class="n">Bu2019lm</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">injection</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">injections</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">eos</span><span class="o">-</span><span class="n">file</span>  <span class="o">./</span><span class="n">example_files</span><span class="o">/</span><span class="n">eos</span><span class="o">/</span><span class="n">ALF2</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">BNS</span> <span class="o">--</span><span class="n">original</span><span class="o">-</span><span class="n">parameters</span> <span class="o">--</span><span class="n">extension</span> <span class="n">json</span> <span class="o">--</span><span class="n">aligned</span><span class="o">-</span><span class="n">spin</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">BNS</span> <span class="o">--</span><span class="n">filename</span> <span class="o">./</span><span class="n">outdir_BNS</span><span class="o">/</span><span class="n">injection_Bu2019lm</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">NSBH</span></code> type</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nmma_create_injection</span> <span class="o">--</span><span class="n">prior</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">priors</span><span class="o">/</span><span class="n">Bu2019nsbh</span><span class="o">.</span><span class="n">prior</span> <span class="o">--</span><span class="n">injection</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">injections</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">eos</span><span class="o">-</span><span class="n">file</span>  <span class="o">./</span><span class="n">example_files</span><span class="o">/</span><span class="n">eos</span><span class="o">/</span><span class="n">ALF2</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">NSBH</span>  <span class="o">--</span><span class="n">original</span><span class="o">-</span><span class="n">parameters</span> <span class="o">--</span><span class="n">extension</span> <span class="n">json</span> <span class="o">--</span><span class="n">aligned</span><span class="o">-</span><span class="n">spin</span> <span class="o">--</span><span class="n">filename</span> <span class="o">./</span><span class="n">outdir_NSBH</span><span class="o">/</span><span class="n">injection_Bu2019nsbh</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>5 **- Generate lightcurve **</p>
+<p>This command line concern the <code class="docutils literal notranslate"><span class="pre">ZTF</span></code> for <code class="docutils literal notranslate"><span class="pre">Rubin</span></code> please replace `–injection-detection-limit 24.1,21.7,21.4,20.9,24.5,23.0,23.2,22.6,22.6 `` by  <strong>–injection-detection-limit 23.9,25.0,24.7,24.0,23.3,22.1,23.2,22.6,22.6</strong></p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">BNS</span></code></strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">light_curve_generation</span> <span class="o">--</span><span class="n">model</span>  <span class="n">Bu2019lm</span> <span class="o">--</span><span class="n">svd</span><span class="o">-</span><span class="n">path</span> <span class="o">./</span><span class="n">svdmodels</span> <span class="o">--</span><span class="n">outdir</span> <span class="o">./</span><span class="n">outdir_BNS</span> <span class="o">--</span><span class="n">label</span> <span class="n">injection_Bu2019lm</span> <span class="o">--</span><span class="n">dt</span> <span class="mf">0.5</span> <span class="o">--</span><span class="n">injection</span> <span class="o">./</span><span class="n">outdir_BNS</span><span class="o">/</span><span class="n">injection_Bu2019lm</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">injection</span><span class="o">-</span><span class="n">detection</span><span class="o">-</span><span class="n">limit</span> <span class="mf">24.1</span><span class="p">,</span><span class="mf">21.7</span><span class="p">,</span><span class="mf">21.4</span><span class="p">,</span><span class="mf">20.9</span><span class="p">,</span><span class="mf">24.5</span><span class="p">,</span><span class="mf">23.0</span><span class="p">,</span><span class="mf">23.2</span><span class="p">,</span><span class="mf">22.6</span><span class="p">,</span><span class="mf">22.6</span> <span class="o">--</span><span class="n">filters</span> <span class="n">sdssu</span><span class="p">,</span><span class="n">ps1__g</span><span class="p">,</span><span class="n">ps1__r</span><span class="p">,</span><span class="n">ps1__i</span><span class="p">,</span><span class="n">ps1__z</span><span class="p">,</span><span class="n">ps1__y</span><span class="p">,</span><span class="mi">2</span><span class="n">massj</span><span class="p">,</span><span class="mi">2</span><span class="n">massh</span><span class="p">,</span><span class="mi">2</span><span class="n">massks</span>  <span class="o">--</span><span class="n">absolute</span> <span class="o">--</span><span class="n">plot</span> <span class="o">--</span><span class="n">generation</span><span class="o">-</span><span class="n">seed</span> <span class="mi">42</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">NSBH</span></code></strong></p>
+<p>light_curve_generation –model  Bu2019lm –svd-path ./svdmodels –outdir ./outdir_NSBH –label injection_Bu2019nsbh –dt 0.5 –injection ./outdir_NSBH/injection_Bu2019nsbh.json –injection-detection-limit 24.1,21.7,21.4,20.9,24.5,23.0,23.2,22.6,22.6 –filters sdssu,ps1__g,ps1__r,ps1__i,ps1__z,ps1__y,2massj,2massh,2massks –absolute –plot –generation-seed 42</p>
+<p>6 <strong>- KNe detection process using <code class="docutils literal notranslate"><span class="pre">gwemopt</span></code></strong></p>
+<ul class="simple">
+<li><p>Here we need to use <code class="docutils literal notranslate"><span class="pre">skymap</span></code> files from <strong><a class="reference external" href="https://doi.org/10.5281/zenodo.7026209">zenodo</a></strong>  in this example we use  <strong>O4</strong> (<code class="docutils literal notranslate"><span class="pre">--skymap-dir</span> <span class="pre">./runs/O4/farah/allsky</span></code>), but this should be replace by <strong>O5</strong> if you work with <strong>O5</strong> data, then…</p></li>
+<li><p>Then the json injection file <code class="docutils literal notranslate"><span class="pre">injection_Bu2019lm.json</span></code> for BNS or <code class="docutils literal notranslate"><span class="pre">injection_Bu2019nsbh.json</span></code> for NSBH, which contains the IDs of the simulations we need to identify their correspondence in the <code class="docutils literal notranslate"><span class="pre">skymap</span></code> data.</p></li>
+<li><p>And the direction of the <code class="docutils literal notranslate"><span class="pre">config</span></code> foder in  <strong><a class="reference external" href="https://github.com/mcoughlin/gwemopt">gwemopt</a></strong> file.</p></li>
+<li><p>in <strong><code class="docutils literal notranslate"><span class="pre">--telescope</span> <span class="pre">ZTF</span></code></strong>, <strong>ZTF</strong> should be replace by <code class="docutils literal notranslate"><span class="pre">LSST</span></code> for <code class="docutils literal notranslate"><span class="pre">Rubin</span></code> telescope.</p></li>
+<li><p>Also the <code class="docutils literal notranslate"><span class="pre">--exposuretime</span> <span class="pre">300</span></code> means time of observation (300 secondes), but we should also use ``–exposuretime 180` for 180 secondes.</p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">BNS</span></code></strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">light_curve_detection</span> <span class="o">--</span><span class="n">configDirectory</span> <span class="o">./</span><span class="n">gwemopt</span><span class="o">/</span><span class="n">config</span> <span class="o">--</span><span class="n">outdir</span> <span class="o">./</span><span class="n">ztf_detection</span><span class="o">/</span><span class="n">outdir_BNS</span> <span class="o">--</span><span class="n">injection</span><span class="o">-</span><span class="n">file</span>  <span class="o">./</span><span class="n">outdir_BNS</span><span class="o">/</span><span class="n">injection_Bu2019lm</span><span class="o">.</span><span class="n">json</span>  <span class="o">--</span><span class="n">skymap</span><span class="o">-</span><span class="nb">dir</span> <span class="o">./</span><span class="n">runs</span><span class="o">/</span><span class="n">O4</span><span class="o">/</span><span class="n">farah</span><span class="o">/</span><span class="n">allsky</span> <span class="o">--</span><span class="n">lightcurve</span><span class="o">-</span><span class="nb">dir</span> <span class="o">./</span><span class="n">outdir_BNS</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">BNS</span> <span class="o">--</span><span class="n">filters</span> <span class="n">sdssu</span><span class="p">,</span><span class="n">ps1__g</span><span class="p">,</span><span class="n">ps1__r</span><span class="p">,</span><span class="n">ps1__i</span><span class="p">,</span><span class="n">ps1__z</span><span class="p">,</span><span class="n">ps1__y</span><span class="p">,</span><span class="mi">2</span><span class="n">massj</span><span class="p">,</span><span class="mi">2</span><span class="n">massh</span><span class="p">,</span><span class="mi">2</span><span class="n">massks</span> <span class="o">--</span><span class="n">exposuretime</span> <span class="mi">300</span> <span class="o">--</span><span class="n">detections</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">ztf_detection</span><span class="o">/</span><span class="n">bns_lc_skymap_detection</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">telescope</span> <span class="n">ZTF</span> <span class="o">--</span><span class="n">tmin</span> <span class="mi">0</span> <span class="o">--</span><span class="n">tmax</span> <span class="mi">14</span> <span class="o">--</span><span class="n">dt</span> <span class="mf">0.5</span>  <span class="o">--</span><span class="n">parallel</span> <span class="o">--</span><span class="n">number</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">cores</span> <span class="mi">10</span> <span class="o">--</span><span class="n">generation</span><span class="o">-</span><span class="n">seed</span> <span class="mi">42</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">NSBH</span></code></strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">light_curve_detection</span> <span class="o">--</span><span class="n">configDirectory</span> <span class="o">./</span><span class="n">gwemopt</span><span class="o">/</span><span class="n">config</span> <span class="o">--</span><span class="n">outdir</span> <span class="o">./</span><span class="n">ztf_detection</span><span class="o">/</span><span class="n">outdir_NSBH</span> <span class="o">--</span><span class="n">injection</span><span class="o">-</span><span class="n">file</span>  <span class="o">./</span><span class="n">outdir_NSBH</span><span class="o">/</span><span class="n">injection_Bu2019nsbh</span><span class="o">.</span><span class="n">json</span>  <span class="o">--</span><span class="n">skymap</span><span class="o">-</span><span class="nb">dir</span> <span class="o">./</span><span class="n">runs</span><span class="o">/</span><span class="n">O4</span><span class="o">/</span><span class="n">farah</span><span class="o">/</span><span class="n">allsky</span> <span class="o">--</span><span class="n">lightcurve</span><span class="o">-</span><span class="nb">dir</span> <span class="o">./</span><span class="n">outdir_NSBH</span> <span class="o">--</span><span class="n">binary</span><span class="o">-</span><span class="nb">type</span> <span class="n">NSBH</span> <span class="o">--</span><span class="n">filters</span> <span class="n">sdssu</span><span class="p">,</span><span class="n">ps1__g</span><span class="p">,</span><span class="n">ps1__r</span><span class="p">,</span><span class="n">ps1__i</span><span class="p">,</span><span class="n">ps1__z</span><span class="p">,</span><span class="n">ps1__y</span><span class="p">,</span><span class="mi">2</span><span class="n">massj</span><span class="p">,</span><span class="mi">2</span><span class="n">massh</span><span class="p">,</span><span class="mi">2</span><span class="n">massks</span> <span class="o">--</span><span class="n">exposuretime</span> <span class="mi">300</span> <span class="o">--</span><span class="n">detections</span><span class="o">-</span><span class="n">file</span> <span class="o">./</span><span class="n">ztf_detection</span><span class="o">/</span><span class="n">nsbh_lc_skymap_detection</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">telescope</span> <span class="n">ZTF</span> <span class="o">--</span><span class="n">tmin</span> <span class="mi">0</span> <span class="o">--</span><span class="n">tmax</span> <span class="mi">14</span> <span class="o">--</span><span class="n">dt</span> <span class="mf">0.5</span>  <span class="o">--</span><span class="n">parallel</span> <span class="o">--</span><span class="n">number</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">cores</span> <span class="mi">10</span> <span class="o">--</span><span class="n">generation</span><span class="o">-</span><span class="n">seed</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, The SkyPortal Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
